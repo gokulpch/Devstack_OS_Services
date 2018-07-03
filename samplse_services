@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+[[local|localrc]]
+ADMIN_PASSWORD=secret
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+#FIXED_RANGE=172.31.1.0/24
+#FLOATING_RANGE=192.168.20.0/25
+HOST_IP=192.168.113.33
+disable_service n-net
+# rabbitmq, mysql, keystone
+ENABLED_SERVICES=rabbit,mysql,key
+# noca services
+ENABLED_SERVICES+=,n-api,n-crt,n-obj,n-cpu,n-cond,n-sch
+# glance services
+ENABLED_SERVICES+=,g-api,g-reg
+# neutron services
+ENABLED_SERVICES+=,q-svc,q-dhcp,q-meta,q-agt,q-l3
+# horizon service
+ENABLED_SERVICES+=,horizon
+# nova novnc and cert auth
+ENABLED_SERVICES+=,n-novnc,n-cauth
+# cinder services
+ENABLED_SERVICES+=,cinder,c-api,c-vol,c-sch,c-bak
+# swift services
+ENABLED_SERVICES+=,s-proxy,s-object,s-container,s-account
+# heat services
+ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
+# trove services
+ENABLED_SERVICES+=,trove,tr-api,tr-tmgr,tr-cond
+# sahara service
+ENABLED_SERVICES+=,sahara
+# ceilometer services
+ENABLED_SERVICES+=ceilometer-acentral,ceilometer-collector,ceilometer-api,ceilometer-acompute,ceilometer-alarm-singleton,ceilometer-alarm-notifier
+NOVA_VNC_ENABLED=True
+# Branches
+HORIZON_BRANCH=stable/mitaka
+KEYSTONE_BRANCH=stable/mitaka
+NOVA_BRANCH=stable/mitaka
+GLANCE_BRANCH=stable/mitaka
+CINDER_BRANCH=stable/mitaka
+NEUTRON_BRANCH=stable/mitaka
+SWIFT_BRANCH=stable/mitaka
+HEAT_BRANCH=stable/mitaka
+TROVE_BRANCH=stable/mitaka
