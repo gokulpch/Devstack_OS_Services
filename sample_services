@@ -10,7 +10,7 @@ HOST_IP=192.168.113.33
 disable_service n-net
 # rabbitmq, mysql, keystone
 ENABLED_SERVICES=rabbit,mysql,key
-# noca services
+# nova services
 ENABLED_SERVICES+=,n-api,n-crt,n-obj,n-cpu,n-cond,n-sch
 # glance services
 ENABLED_SERVICES+=,g-api,g-reg
