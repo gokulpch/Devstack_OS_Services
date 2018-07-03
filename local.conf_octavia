@@ -1,0 +1,31 @@
+enable_plugin barbican https://review.openstack.org/openstack/barbican
+enable_plugin neutron https://review.openstack.org/openstack/neutron
+enable_plugin octavia https://review.openstack.org/openstack/octavia
+LIBS_FROM_GIT+=python-octaviaclient
+
+KEYSTONE_TOKEN_FORMAT=fernet
+
+DATABASE_PASSWORD=secretdatabase
+RABBIT_PASSWORD=secretrabbit
+ADMIN_PASSWORD=secretadmin
+SERVICE_PASSWORD=secretservice
+SERVICE_TOKEN=111222333444
+# Enable Logging
+LOGFILE=/opt/stack/logs/stack.sh.log
+VERBOSE=True
+LOG_COLOR=True
+# Pre-requisite
+ENABLED_SERVICES=key,rabbit,mysql
+# Nova
+ENABLED_SERVICES+=,n-api,n-obj,n-cpu,n-cond,n-sch
+# Placement service needed for Nova
+ENABLED_SERVICES+=,placement-api,placement-client
+# Glance
+ENABLED_SERVICES+=,g-api,g-reg
+# Neutron
+ENABLED_SERVICES+=,neutron-api,neutron-agent,neutron-dhcp,neutron-l3
+ENABLED_SERVICES+=,neutron-metadata-agent,neutron-qos
+# Tempest (optional)
+#ENABLED_SERVICES+=,tempest
+# Octavia
+ENABLED_SERVICES+=,octavia,o-api,o-cw,o-hm,o-hk
